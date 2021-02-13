@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Circle Game : Ironhack Project</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" src="./js/game.js"></script>
+</head>
+<body class="main-background">
+    <div id="text-background">
+        <span class="center">Circle Game</span>
+    </div>
+        
+        <!-- <div id="intro-wrapper" class="flex">
+            <div class="vl top"></div>
+            <div class="vl bottom"></div>
+            <div id="intro-title">
+                <h2 class="center">the</h2>
+                <h1 class="center">Circle Game</h1>
+            </div>
+            
+            <p class="intro-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro labore accusamus natus molestiae harum, quam modi.
+            </p>
+
+            <button id="play-btn"><a>play</a></button>
+        </div> -->
+        
+        <div id="game-wrapper" class="flex">
+            <div id="title-game">
+                <h2 class="center">the</h2>
+                <h1 class="center">Circle Game</h1>
+            </div>
+            <div id="game-zone" class="flex">
+
+                <div id="lines-zone">
+                    <div id="l1" class="line"></div>
+                    <div id="l2" class="line"></div>
+                    <div id="l3" class="line">
+                        <div class="line-ball"></div>
+                    </div>
+                    <div id="l4" class="line"></div>
+                    <div id="l5" class="line"></div>
+                    <div id="l6" class="line"></div>
+                    <div id="l7" class="line"></div>
+                </div>
+                <div class="circle-left-container left">
+                    <div id="circle-left" class="spin left">
+                        <div id="left-1" class="ball left-ball"></div>
+                        <div id="left-2" class="ball right-ball"></div>
+                    </div>
+                </div>
+                
+                <div id="circle-right" class="spin right">
+                    <div id="right-1" class="ball left-ball"></div>
+                    <div id="right-2" class="ball right-ball"></div>
+                </div>
+                
+            </div>
+            <div id="tips">
+                <p>Use <span class="key">Q</span> and <span class="key">D</span> to move each circles</p>
+            </div>
+            <div id="hud" class="flex">
+                <div id="score">
+                    <p>score:<span class="points">300</span><span class="pts">pts</p>
+                </div>
+                <div id="timer">
+                    <p>time: <span class="time">00</span>s</p>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
