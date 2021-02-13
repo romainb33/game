@@ -280,11 +280,11 @@ p {
 
 @keyframes title {
   0% {
-    filter: blur(1px);
+    filter: blur(0.5px);
     letter-spacing: 0.7em;
   }
   100% {
-    filter: blur(2px);
+    filter: blur(1px);
     letter-spacing: 0.75em;
   }
 }
