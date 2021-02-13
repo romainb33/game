@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital@0;1&display=swap');
+    
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+ul, ol {
+    padding-left: 20px;
+}
+.flex {
+    display: flex;
+}
+body {
+    background: -webkit-linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%);
+    background: -moz-linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%);
+    background: linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%);
+    background-attachment: fixed;
+    animation: gradient 12s ease infinite alternate;
+    background-size: 300% 300%;
+}
+.center {
+    text-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+a {
+    color: white;
+    font-family: "Space Mono", monospace, sans-serif;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.7em;
+}
+a {
+    text-decoration: none;
+}
+button {
+    outline:none;
+    border: none;
+    cursor: pointer;
+}
+.vl {
+    border-left: 1px solid white;
+    height: 20%;
+    position: fixed;
+    left: calc(100%/2);
+}
+.top {
+    top: 0px;
+}
+.bottom {
+    bottom: 0px;
+}
+.left {
+    left: 0px;
+}
+.right {
+    right: -38px;
+}
+#text-background {
+    position: fixed;
+    z-index: -2;
+    top: calc(100%/2 - 100px);
+    left: 30px;
+}
+#text-background span {
+    font-size: 100px;
+    color: rgba(255, 255, 255, 0.1);
+    filter: blur(5px);
+    font-family: "Space Mono", monospace, sans-serif;
+    font-weight: 400;
+    letter-spacing: 60px;
+}
+#intro-wrapper {
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 60%;
+}
+#intro-title{
+    margin-bottom: 25px;
+}
+#intro-title h1 {
+    font-size: 50px;
+}
+#intro-title h2 {
+    font-size: 25px;
+    
+}
+p {
+    font-size: 14px;
+    letter-spacing: 0.3em;
+}
+#play-btn {
+    margin: 40px 0px;
+}
+#play-btn a {
+    color: #DB4B4B;
+    letter-spacing: 0.3em;
+    transition: all 0.3s cubic-bezier(0,.95,1,1);
+    padding: 10px 35px;
+    background-color: white;
+}
+#play-btn a:hover {
+    color: #DB4B4B;
+    letter-spacing: 0.5em;
+    padding: 10px 45px;
+}
+
+/* GAME PART */
+
+#game-wrapper {
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#title-game {
+    filter: blur(1px);
+    margin: 40px;
+}
+#title-game h2 {
+    font-size: 18px;
+}
+#title-game h1 {
+    font-size: 36px
+}
+
+#game-zone {
+    position:relative;
+    /* border: 1px solid black; */
+    width: 880px;
+    height: 420px;
+}
+
+/* CIRCLES */
+
+.circle-left-container {
+    position: relative;
+    height: 420px;
+    width: 420px;
+    /* border: 1px solid rgba(255,255,255,0.3); */
+    border-radius: 50%;
+
+    animation: spin 7s linear 0s infinite reverse;
+  
+    animation-play-state: paused;
+}
+
+#circle-left,
+#circle-right {
+    position: relative;
+    height: 420px;
+    width: 420px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    /* transform: rotate(90deg);  */
+    animation: spin 14s linear 0s infinite normal;
+}
+
+/* .spin {
+    animation: spin 10s infinite linear;    
+} */
+.reverse{
+    animation-play-state: running; 
+}
+
+
+.ball {
+    height: 14px;
+    width: 14px;
+    background-color: white;
+    border-radius: 50%;
+}
+.left-ball {
+    position: absolute;
+    left: -7px;
+    top: calc(420px/2 - 7px);
+}
+.right-ball {
+    position: absolute;
+    right: -7px;
+    top: calc(420px/2 - 7px);
+}
+
+/* LINES */
+#lines-zone {
+    position: absolute;
+    /* border: 1px solid black; */
+    width: 300px;
+    height: 280px;
+    left: calc(50% - 300px/2);
+    top: calc(50% - 280px/2);
+}
+.line-ball {
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+.line {
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 43px;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+.line:nth-child(2n+1) {
+    margin-bottom: 47px;
+    width: 70%;
+    height: 1px;
+    background-color: white;
+}
+#tips {
+    margin: 60px 0 20px;
+}
+.key {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid white;
+    text-align: right;
+}
+#hud {
+    width: 350px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+#hud p {
+    font-size: 12px;
+}
+.points,
+.time {
+    font-size: 20px;
+}
+
+/* ANIMATION */
+@keyframes spin { 
+    from { 
+        transform: rotate(360deg); 
+    } to { 
+        transform: rotate(0deg); 
+    }
+}
+
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+
+
+
