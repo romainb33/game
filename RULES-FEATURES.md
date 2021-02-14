@@ -8,20 +8,32 @@ When he make a mistake he lose 5 seconds on the timer.
 
 # TODO
 
+- add #intro-wrapper as an intro
+- then add screen with the rules in three steps.
+
 - *addEvent Listeners to control each circles.*
 
-- *Create a function that create new ball on vertical lines every with a random time and on a random line*
+- *Create a function that create new balls on vertical lines every with a random time and on a random line*
     -  Math.random on setInterval()
     -  Math.random on querySelector('.line')
-
-- *Create a function to check if vertical balls and circles balls are on the same coordinates if yes score ++*
-
+    
+- *Create a function to check if vertical balls and circles balls have on the same coordinates if yes score ++*
+    ```
     function checkIfSameCoordinates (circleball, lineball) {
-        if (circleball.position === lineball.position && circleball.color === lineball.color)  // ===> score.value += 10
-        else if (circleball.position === lineball.position && circleball.color !== lineball.color ) // ===>  timer.value -= 5
+        if (circleball.position === lineball.position && circleball.color === lineball.color) { 
+            score.value += 10
+            play sound goods
+        } 
+        else if (circleball.position === lineball.position && circleball.color !== lineball.color )  {
+            timer.value -= 5 // animation css avec -5s
+            play sounds pas good
+        }
     }
- 
+    ```
+- *Create a function timer*
+
 - *Create a function when the game is over*
+    ```
     function isFinished () {
         if (timer === 0) {
             //remove #game-wrapper && add a #final-wrapper with score
@@ -32,3 +44,4 @@ When he make a mistake he lose 5 seconds on the timer.
             // Btn Share the game    
         }
     }
+    ```
