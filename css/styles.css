@@ -226,11 +226,12 @@ p {
 .line-ball {
   position: absolute;
   top: -5px;
-  left: 20px;
   height: 10px;
   width: 10px;
   background-color: white;
   border-radius: 50%;
+  animation: lateral-move 3s linear alternate;
+
 }
 .line {
   position: relative;
@@ -239,11 +240,12 @@ p {
   width: 100%;
   height: 1px;
   background-color: white;
-}
-.line:nth-child(2n + 1) {
-  width: 70%;
   animation: lines 4s ease infinite alternate;
+
 }
+/* .line:nth-child(2n + 1) {
+  width: 70%;
+} */
 
 /* FOOTER */
 #tips {
@@ -279,6 +281,15 @@ p {
   }
   to {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes lateral-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(300px);
   }
 }
 
