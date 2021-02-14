@@ -35,7 +35,7 @@ function newBalls() {
         setTimeout(() => {
         lines[randomIndex].removeChild(lines[randomIndex].firstChild) }, 3000) 
 
-    }, Math.random()*4000);
+    }, Math.random()*1500);
     
 }
 
