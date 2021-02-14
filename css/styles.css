@@ -13,6 +13,7 @@ ol {
   display: flex;
 }
 body {
+  overflow: hidden; /* Hide scrollbars */
   background: -webkit-linear-gradient(
     60deg,
     #d34a4a 0%,
@@ -72,18 +73,20 @@ button {
   right: -38px;
 }
 #text-background {
-  position: fixed;
-  z-index: -2;
-  top: calc(100% / 2 - 100px);
-  left: 30px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 #text-background span {
-  font-size: 100px;
+  font-size: 250px;
   color: rgba(255, 255, 255, 0.1);
-  filter: blur(5px);
+  filter: blur(15px);
   font-family: "Space Mono", monospace, sans-serif;
   font-weight: 400;
-  letter-spacing: 60px;
+  letter-spacing: 70px;
 }
 #intro-wrapper {
   margin: 0 auto;
@@ -144,6 +147,7 @@ p {
 
 #game-zone {
   position: relative;
+  justify-content: space-between;
   /* border: 1px solid black; */
   width: 880px;
   height: 420px;
@@ -152,6 +156,18 @@ p {
 /* CIRCLES */
 
 .circle-left-container {
+  position: relative;
+  height: 420px;
+  width: 420px;
+  /* border: 1px solid rgba(255,255,255,0.3); */
+  border-radius: 50%;
+
+  animation: spin 7s linear 0s infinite reverse;
+
+  animation-play-state: paused;
+}
+
+.circle-right-container {
   position: relative;
   height: 420px;
   width: 420px;
@@ -219,17 +235,17 @@ p {
 .line {
   position: relative;
   margin: 0 auto;
-  margin-bottom: 43px;
+  margin-bottom: 45px;
   width: 100%;
   height: 1px;
   background-color: white;
 }
 .line:nth-child(2n + 1) {
-  margin-bottom: 47px;
   width: 70%;
-  height: 1px;
-  background-color: white;
+  animation: lines 4s ease infinite alternate;
 }
+
+/* FOOTER */
 #tips {
   margin: 60px 0 20px;
 }
@@ -286,5 +302,14 @@ p {
   100% {
     filter: blur(1px);
     letter-spacing: 0.75em;
+  }
+}
+
+@keyframes lines {
+  0% {
+    background: #fff; 
+  }  
+  100% {
+    background: #e0caca;
   }
 }
