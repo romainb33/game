@@ -216,12 +216,14 @@ p {
 
 /* LINES */
 #lines-zone {
+  padding: 6px 0;
   position: absolute;
   /* border: 1px solid black; */
   width: 300px;
   height: 280px;
   left: calc(50% - 300px / 2);
   top: calc(50% - 280px / 2);
+  overflow: hidden;
 }
 .line-ball {
   position: absolute;
@@ -230,13 +232,13 @@ p {
   width: 10px;
   background-color: white;
   border-radius: 50%;
-  animation: lateral-move 3s linear alternate;
+  animation: lateral-move 20s linear alternate;
 
 }
 .line {
   position: relative;
   margin: 0 auto;
-  margin-bottom: 45px;
+  margin-bottom: 43px;
   width: 100%;
   height: 1px;
   background-color: white;
@@ -285,11 +287,19 @@ p {
 }
 
 @keyframes lateral-move {
-  from {
+  0% {
     transform: translateX(0);
+    opacity: 0;
   }
-  to {
+  5% {
+    opacity: 1;
+  }
+  95% {   
+    opacity: 1;
+  }
+  100% {
     transform: translateX(300px);
+    opacity: 0;
   }
 }
 

@@ -22,24 +22,59 @@ const time = document.querySelector('#time');
 
 // console.log(leftBallOne.getBoundingClientRect().left.toFixed(0))
 
+// create a array to stock each ball created
+let currentBalls = [];
+
 // Functions
 function newBalls() {
     setInterval(() => {
         let randomIndex = Math.floor(Math.random()*lines.length);
         const balls = document.createElement('div');
         balls.classList.add('line-ball');
-        console.log(balls)
         lines[randomIndex].appendChild(balls)
         
-        console.log(balls)
+        // setInterval(() => {
+        //     console.log(Number(leftCircle.getBoundingClientRect().x.toFixed(0)) + "-" + Number(leftCircle.getBoundingClientRect().y.toFixed(0)))
+        //     console.log(Number(balls.getBoundingClientRect().x.toFixed(0)) + "-" + Number(balls.getBoundingClientRect().y.toFixed(0)))
+    
+        // }, 20);
+
+        currentBalls.push(balls)
+        
+        // Calculate the realtime position of each balls and circleBalls
+        setInterval(() => {
+            currentBalls.forEach(ball => {
+                checkSameCoordinates(leftBallOne, ball)
+            });
+        }, 10);
+        
+        // Remove ball if it reaches the end of the line /!\/!\/!\ Adjust the duration depending on the animation.
         setTimeout(() => {
-        lines[randomIndex].removeChild(lines[randomIndex].firstChild) }, 3000) 
+        lines[randomIndex].removeChild(lines[randomIndex].firstChild) }, 20000) 
 
     }, Math.random()*1500);
-    
 }
 
+function checkSameCoordinates(circleBall, lineBall) {
+    if (Number(circleBall.getBoundingClientRect().x.toFixed(0)) == Number(lineBall.getBoundingClientRect().x.toFixed(0))
+    && Number(circleBall.getBoundingClientRect().y.toFixed(0)) == Number(lineBall.getBoundingClientRect().y.toFixed(0))) {
+        console.log("it works")
+        lineBall.remove()
+    }
+}
+// SOME TEST ABOUT THE TOLERANCE
+// function checkSameCoordinates(circleBall, lineBall) {
+//     if ((Number(circleBall.getBoundingClientRect().top.toFixed(1)) - 0.5 <= Number(lineBall.getBoundingClientRect().top.toFixed(1)) && Number(lineBall.getBoundingClientRect().top.toFixed(1))  >= Number(circleBall.getBoundingClientRect().top.toFixed(1)) + 0.5)
+//     && (Number(circleBall.getBoundingClientRect().left.toFixed(1)) - 0.5 <= Number(lineBall.getBoundingClientRect().left.toFixed(1)) && Number(lineBall.getBoundingClientRect().left.toFixed(1)) >= Number(circleBall.getBoundingClientRect().left.toFixed(1)) + 0.5)) {
+//         console.log("it works")
+//         lineBall.remove()
+//     }
+// }
+
 newBalls()
+
+
+
 
 //Event listeners
 
@@ -47,7 +82,7 @@ document.addEventListener('keydown', function (event) {
     if (event.key === 'q') {
         
         leftCircle.classList.toggle('reverse')
-        console.log('q is called')
+        // console.log('q is called')
         console.log(leftCircle)
         console.log(leftBallOne.getBoundingClientRect().left.toFixed(0))
 
@@ -61,7 +96,7 @@ document.addEventListener('keydown', function (event) {
     if (event.key === 'd') {
         
         rightCircle.classList.toggle('reverse')
-        console.log('d is called')
+        // console.log('d is called')
         console.log(rightCircle)
 
     }
