@@ -73,6 +73,7 @@ button {
   right: -38px;
 }
 #text-background {
+  z-index: -10;
   position: absolute;
   left: 0;
   right: 0;
@@ -96,6 +97,7 @@ button {
   height: 100vh;
   width: 60%;
 }
+
 #intro-title {
   margin-bottom: 25px;
 }
@@ -126,12 +128,16 @@ p {
 }
 
 /* GAME PART */
-
 #game-wrapper {
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: none;
+}
+
+.fadein {
+  animation: fade 1.5s ease-in;
 }
 #title-game {  
   margin: 40px;
@@ -232,7 +238,8 @@ p {
   width: 10px;
   background-color: white;
   border-radius: 50%;
-  animation: lateral-move 10s linear alternate;
+  animation: lateral-move 6s linear ;
+  animation-direction: inherit;
 
 }
 .line {
@@ -242,12 +249,10 @@ p {
   width: 100%;
   height: 1px;
   background-color: white;
-  animation: lines 4s ease infinite alternate;
-
 }
-/* .line:nth-child(2n + 1) {
-  width: 70%;
-} */
+.line:nth-of-type(2n) {
+  animation-direction: reverse;
+}
 
 /* FOOTER */
 #tips {
@@ -280,6 +285,15 @@ p {
 }
 
 /* ANIMATION */
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes spin {
   from {
     transform: rotate(360deg);
@@ -326,14 +340,5 @@ p {
   100% {
     filter: blur(1px);
     letter-spacing: 0.75em;
-  }
-}
-
-@keyframes lines {
-  0% {
-    background: #fff; 
-  }  
-  100% {
-    background: #e0caca;
   }
 }

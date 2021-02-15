@@ -1,4 +1,9 @@
 // Link
+const playBtn = document.querySelector('#playBtn')
+const gameIntro = document.querySelector('#intro-wrapper')
+const gameZone = document.querySelector('#game-zone')
+const gameWrapper = document.querySelector('#game-wrapper')
+
 const leftCircle = document.querySelector('.circle-left-container')
 const leftBallOne = document.getElementById('left-1');
 const leftBallTwo = document.getElementById('left-2');
@@ -20,7 +25,6 @@ const timer = document.querySelector('.time');
 let currentBalls = [];
 let score = 0;
 let time = 60;
-let intervalId = 0;
 
 
 // Functions
@@ -34,7 +38,7 @@ function newBalls() {
         // setInterval(() => {
         //     console.log(Number(leftCircle.getBoundingClientRect().x.toFixed(0)) + "-" + Number(leftCircle.getBoundingClientRect().y.toFixed(0)))
         //     console.log(Number(balls.getBoundingClientRect().x.toFixed(0)) + "-" + Number(balls.getBoundingClientRect().y.toFixed(0)))
-        // }, 20);
+        // }, 1000);
 
         currentBalls.push(balls)
         
@@ -50,9 +54,9 @@ function newBalls() {
         
         // Remove ball if it reaches the end of the line /!\/!\/!\ Adjust the duration depending on the animation.
         setTimeout(() => {
-        lines[randomIndex].removeChild(lines[randomIndex].firstChild) }, 10000) 
+        lines[randomIndex].removeChild(lines[randomIndex].firstChild) }, 6000) 
 
-    }, 4000);
+    }, 1500);
 }
 
 function checkSameCoordinates(circleBall, lineBall) {
@@ -61,28 +65,46 @@ function checkSameCoordinates(circleBall, lineBall) {
 
     let lineBallX = Number(lineBall.getBoundingClientRect().x.toFixed(0)) + 5;  // to trigger the center add the radius
     let lineBallY = Number(lineBall.getBoundingClientRect().y.toFixed(0)) + 5;
-    if ((circleBallX === lineBallX + 5 || circleBallX === lineBallX - 5) && (circleBallY === lineBallY + 5 || circleBallY === lineBallY - 5)) {
-        console.log("it works");
+    
+    // console.log("circleBall= " + circleBallX + " --- " + circleBallY + "lineBall= " + lineBallX + ";" +lineBallY)        
+
+    if ((circleBallX - 6 <= lineBallX && circleBallX + 6 >= lineBallX) && (circleBallY <= lineBallY + 6 && circleBallY >= lineBallY - 6)) {
+        console.log("it works------");
+        console.log("circleBallX= " + circleBallX + " : " + circleBallY + " ---- lineBallX= " + lineBallX + " : " +lineBallY)        
+
         lineBall.remove()
         score++
-        console.log(score)
-        points.textContent = score;   
+        points.textContent = score;
     }
 }
 
 function startTimer() {
-    intervalId = setInterval(() => {
-      time--;
-      timer.textContent = time;
-    }, 1000);
+    setInterval(() => {
+        time--;
+        timer.textContent = time;
+        if (time === 0) {
+            timer.textContent = 0;
+            alert("GAME OVER");
+            gameZone.remove();
+        }    
+    }, 1000)
+}
 
-  }
-  
-newBalls()
-startTimer()
-
+function startTheGame(){
+    newBalls();
+    startTimer();
+}
 
 //Event listeners
+
+document.addEventListener('click', function() {
+    setTimeout(startTheGame, 3000);
+
+    gameIntro.style.display = "none"
+    gameWrapper.style.display = "flex"
+    gameWrapper.classList.add('fadein')
+
+})
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'q') {
@@ -93,12 +115,12 @@ document.addEventListener('keydown', function (event) {
         //DOUBLE THE NUMBER OF REFERENCE…
     }
 })
+
 document.addEventListener('keydown', function (event) {
     if (event.key === 'd') {        
         leftCircle.classList.toggle('reverse')
     }
 })
-
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'ArrowLeft') {
