@@ -232,7 +232,7 @@ p {
   width: 10px;
   background-color: white;
   border-radius: 50%;
-  animation: lateral-move 20s linear alternate;
+  animation: lateral-move 10s linear alternate;
 
 }
 .line {
@@ -256,12 +256,15 @@ p {
 .key {
   display: inline-block;
   position: relative;
-  top: -10px;
-  width: 30px;
-  height: 30px;
+  top: -4px;
+  right: 2px;
+  width: 25px;
+  height: 25px;
   border-radius: 6px;
   border: 1px solid white;
   text-align: right;
+  font-size: 10px;
+  line-height: 28px;
 }
 #hud {
   width: 350px;
