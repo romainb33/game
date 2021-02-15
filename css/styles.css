@@ -128,6 +128,12 @@ p {
 }
 
 /* GAME PART */
+#game-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #game-wrapper {
   margin: 0 auto;
   flex-direction: column;
@@ -282,6 +288,39 @@ p {
 .points,
 .time {
   font-size: 20px;
+}
+
+/* SCORE */
+#score-wrapper {
+  margin: 0 auto;
+  margin-top: 80px;
+  display: none;
+  flex-direction:  column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  width: 60%
+}
+#score-wrapper h3, p {
+  letter-spacing: 0.3em;
+}
+#score-wrapper h3 {
+  margin-top: 40px;
+  font-size: 35px;
+}
+#score-wrapper h3 span {
+  font-size: 50px;
+}
+#score-wrapper p {
+  font-size: 25px;
+}
+.btn {
+  padding: 10px 20px;
+  margin: 70px 30px;
+}
+.btn a:hover {
+  background-color: #e7e4e4;
+  transition: all 0.3s ease-in
 }
 
 /* ANIMATION */

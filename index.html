@@ -12,7 +12,7 @@
     <div id="text-background">
         <span class="center">Circle Game</span>
     </div>
-        
+
         <div id="intro-wrapper" class="flex">
             <div class="vl top"></div>
             <div class="vl bottom"></div>
@@ -27,49 +27,60 @@
 
             <button id="play-btn"><a>play</a></button>
         </div>
-        
+
         <div id="game-wrapper" class="opacity">
             <div id="title-game">
                 <h2 class="center">the</h2>
                 <h1 class="center">Circle Game</h1>
             </div>
-            <div id="game-zone" class="flex">
 
-                <div id="lines-zone">
-                    <div id="l1" class="line"></div>
-                    <div id="l2" class="line"></div>
-                    <div id="l3" class="line"></div>
-                    <div id="l4" class="line"></div>
-                    <div id="l5" class="line"></div>
-                    <div id="l6" class="line"></div>
-                    <div id="l7" class="line"></div>
+            <!-- <div id="score-wrapper">
+                <h3 class="finalscore">Score: <span class="points">300</span>pts</h3>
+                <p class="outcome">You're the best</p>
+                <div>
+                    <button id="play-again"class="btn">Play again</button>
                 </div>
-                <div class="circle-left-container">
-                    <div id="circle-left" class="spin">
-                        <div id="left-1" class="ball left-ball"><div class="red-center"></div></div>
-                        <div id="left-2" class="ball right-ball"></div>
+            </div> -->
+
+            <div id="game-container">
+                <div id="game-zone" class="flex">
+
+                    <div id="lines-zone">
+                        <div id="l1" class="line"></div>
+                        <div id="l2" class="line"></div>
+                        <div id="l3" class="line"></div>
+                        <div id="l4" class="line"></div>
+                        <div id="l5" class="line"></div>
+                        <div id="l6" class="line"></div>
+                        <div id="l7" class="line"></div>
+                    </div>
+                    <div class="circle-left-container">
+                        <div id="circle-left" class="spin">
+                            <div id="left-1" class="ball left-ball"><div class="red-center"></div></div>
+                            <div id="left-2" class="ball right-ball"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="circle-right-container">
+                        <div id="circle-right" class="spin">
+                            <div id="right-1" class="ball left-ball"></div>
+                            <div id="right-2" class="ball right-ball"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div id="tips">
+                    <p>Press <span class="key">Q</span>|<span class="key">D</span> to move left circle & <span class="key"><</span>|<span class="key">></span> to move right circle</p>
+                </div>
+                <div id="hud" class="flex">
+                    <div id="score">
+                        <p>score:<span class="points">0</span><span class="pts">pts</p>
+                    </div>
+                    <div id="timer">
+                        <p>time:<span class="time">60</span>s</p>
                     </div>
                 </div>
-                
-                <div class="circle-right-container">
-                    <div id="circle-right" class="spin">
-                        <div id="right-1" class="ball left-ball"></div>
-                        <div id="right-2" class="ball right-ball"></div>
-                    </div>
-                </div>
-                
-            </div>
-            <div id="tips">
-                <p>Press <span class="key">Q</span>|<span class="key">D</span> to move left circle & <span class="key"><</span>|<span class="key">></span> to move right circle</p>
-            </div>
-            <div id="hud" class="flex">
-                <div id="score">
-                    <p>score:<span class="points">0</span><span class="pts">pts</p>
-                </div>
-                <div id="timer">
-                    <p>time: <span class="time">60</span>s</p>
-                </div>
-            </div>
+            </div>    
         </div>
 </body>
 </html>
