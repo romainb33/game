@@ -122,7 +122,6 @@ p {
   background-color: white;
 }
 #play-btn a:hover {
-  color: #db4b4b;
   letter-spacing: 0.5em;
   padding: 10px 45px;
 }
@@ -174,7 +173,7 @@ p {
   /* border: 1px solid rgba(255,255,255,0.3); */
   border-radius: 50%;
 
-  animation: spin 7s linear 0s infinite reverse;
+  animation: spin 5s linear 0s infinite reverse;
 
   animation-play-state: paused;
 }
@@ -186,7 +185,7 @@ p {
   /* border: 1px solid rgba(255,255,255,0.3); */
   border-radius: 50%;
 
-  animation: spin 7s linear 0s infinite reverse;
+  animation: spin 5s linear 0s infinite reverse;
 
   animation-play-state: paused;
 }
@@ -199,7 +198,7 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   /* transform: rotate(90deg);  */
-  animation: spin 14s linear 0s infinite normal;
+  animation: spin 10s linear 0s infinite normal;
 }
 
 /* .spin {
@@ -244,7 +243,7 @@ p {
   width: 10px;
   background-color: white;
   border-radius: 50%;
-  animation: lateral-move 6s linear ;
+  animation: lateral-move 5s linear ;
   animation-direction: inherit;
 
 }
@@ -315,12 +314,19 @@ p {
   font-size: 25px;
 }
 .btn {
-  padding: 10px 20px;
   margin: 70px 30px;
+  background: transparent;
+}
+.btn a {
+  padding: 10px 30px;
+  background: white;
+  color: #db4b4b;
 }
 .btn a:hover {
-  background-color: #e7e4e4;
-  transition: all 0.3s ease-in
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  transition: all 0.3s ease-in;
 }
 
 /* ANIMATION */
