@@ -1,4 +1,4 @@
-// Link
+// Links
 const playBtn = document.querySelector("#play-btn");
 const playAgain = document.querySelector("#play-again");
 
@@ -21,6 +21,12 @@ const points = document.querySelector(".points");
 const finalScore = document.querySelector(".final-score");
 const timer = document.querySelector(".time");
 
+// Sounds
+const audio = new Audio('../sounds/cello1.mp3');
+audio.volume = 0.6;
+const drop = new Audio('../sounds/drop.mp3');
+drop.volume = 0.4;
+
 // Method for coordinates
 // console.log(leftBallOne.getBoundingClientRect())
 
@@ -33,11 +39,16 @@ let intervalId = 0;
 let intervalId2 = 0;
 let intervalTime = 0;
 
+let i = 0
+let ballIndex = "ball" + i;
+
 // Functions
 function newBalls() {
   intervalId = setInterval(() => {
+    ballIndex = "ball" + i++;
     let randomIndex = Math.floor(Math.random() * lines.length);
     const balls = document.createElement("div");
+    balls.setAttribute("id", ballIndex);
     balls.classList.add("line-ball");
     let randomColor = Math.floor(Math.random() * 2);
     if (randomColor === 1) {
@@ -56,17 +67,17 @@ function newBalls() {
         addPoints(leftBallTwo, ball);
         addPoints(rightBallOne, ball);
         addPoints(rightBallTwo, ball);
-        // console.log('ball is checked')
       });
     }, 40);
-
+    let element = document.getElementById(ballIndex);
+    
     // Remove ball if it reaches the end of the line
     //!\/!\/!\ Adjust the duration depending on the animation.
     setTimeout(() => {
-      lines[randomIndex].removeChild(lines[randomIndex].firstChild);
+      element.remove();
       // currentBalls.unshift() clean the array
     }, 5000);
-  }, 1200);
+  }, 1000);
 }
 
 function checkSameCoordinates(circleBall, lineBall) {
@@ -98,20 +109,21 @@ function checkColor(circleBall, lineBall) {
 function addPoints(circleBall, lineBall) {
   if (checkColor(circleBall, lineBall) && checkSameCoordinates(circleBall, lineBall)) {
     addHalo(circleBall)
+    drop.play();
     lineBall.remove();
     // currentBalls.slice(lineBall, 1) // clean the array not sure it works
     score += 10;
     points.textContent = score;
   }
   else if (!checkColor(circleBall, lineBall) && checkSameCoordinates(circleBall, lineBall)) {
+    addHalo(circleBall)
+    drop.play();
+    lineBall.remove();
     console.log("score -5 is called")
-    console.log(typeof score +"-"+ score + "\n------\n")
     score -= 5;
     console.log(typeof score +"-"+ score)
     points.textContent = score;
   }
-
-
 }
 
 function addHalo(circleBall) {
@@ -154,6 +166,7 @@ function addScoreBoard() {
 //Event listeners
 playBtn.addEventListener("click", function () {
   console.log("hello");
+  audio.play()
   setTimeout(startTheGame, 1000);
 
   gameIntro.style.display = "none";
@@ -161,27 +174,27 @@ playBtn.addEventListener("click", function () {
   gameWrapper.classList.add("fadein");
 });
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keypress", function (event) {
   if (event.key === "q") {
-    leftCircle.classList.toggle("reverse");
+    leftCircle.classList.remove("reverse");
   }
 });
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keypress", function (event) {
   if (event.key === "d") {
-    leftCircle.classList.toggle("reverse");
+    leftCircle.classList.add("reverse");
   }
 });
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "ArrowLeft") {
-    rightCircle.classList.toggle("reverse");
+    rightCircle.classList.remove("reverse");
   }
 });
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "ArrowRight") {
-    rightCircle.classList.toggle("reverse");
+    rightCircle.classList.add("reverse");
   }
 });
 
