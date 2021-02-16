@@ -202,9 +202,6 @@ p {
   animation: spin 10s linear 0s infinite normal;
 }
 
-/* .spin {
-    animation: spin 10s infinite linear;    
-} */
 .reverse {
   animation-play-state: running;
 }
@@ -224,7 +221,20 @@ p {
   position: absolute;
   right: -7px;
   top: calc(420px / 2 - 7px);
+
 }
+
+.halo {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 3px;
+  left: 3px;
+  background-color: inherit;
+  animation: halo 0.5s ease-in-out;
+  border-radius: 50%;
+}
+
 
 /* LINES */
 #lines-zone {
@@ -260,6 +270,17 @@ p {
   animation-direction: reverse;
 }
 
+.blue {
+  background-color: lightblue;
+  border-color: lightblue;
+
+  
+}
+.yellow {
+  background-color: lightyellow;
+  border-color: lightyellow;
+
+}
 /* FOOTER */
 #tips {
   margin: 60px 0 20px;
@@ -327,7 +348,7 @@ p {
   background: transparent;
   border: 1px solid white;
   color: white;
-  transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in-out;
 }
 
 /* ANIMATION */
@@ -336,7 +357,7 @@ p {
     opacity: 0;
   }
   to {
-    opacity: 1;
+    opacity: 0.5;
   }
 }
 
@@ -386,5 +407,19 @@ p {
   100% {
     filter: blur(1px);
     letter-spacing: 0.75em;
+  }
+}
+
+@keyframes halo {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
   }
 }

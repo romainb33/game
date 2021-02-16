@@ -39,17 +39,23 @@ function newBalls() {
     let randomIndex = Math.floor(Math.random() * lines.length);
     const balls = document.createElement("div");
     balls.classList.add("line-ball");
+    let randomColor = Math.floor(Math.random() * 2);
+    if (randomColor === 1) {
+      balls.classList.add("yellow");
+    } else {
+      balls.classList.add("blue");
+    }
+    
     lines[randomIndex].appendChild(balls);
-    console.log('ball is created')
 
     currentBalls.push(balls);
     // Calculate the realtime position of each balls and circleBalls
     intervalId2 = setInterval(() => {
       currentBalls.forEach((ball) => {
-        checkSameCoordinates(leftBallOne, ball);
-        checkSameCoordinates(leftBallTwo, ball);
-        checkSameCoordinates(rightBallOne, ball);
-        checkSameCoordinates(rightBallTwo, ball);
+        addPoints(leftBallOne, ball);
+        addPoints(leftBallTwo, ball);
+        addPoints(rightBallOne, ball);
+        addPoints(rightBallTwo, ball);
         // console.log('ball is checked')
       });
     }, 40);
@@ -58,7 +64,6 @@ function newBalls() {
     //!\/!\/!\ Adjust the duration depending on the animation.
     setTimeout(() => {
       lines[randomIndex].removeChild(lines[randomIndex].firstChild);
-      console.log('one ball is removed')
       // currentBalls.unshift() clean the array
     }, 5000);
   }, 1200);
@@ -71,19 +76,48 @@ function checkSameCoordinates(circleBall, lineBall) {
   let lineBallX = Number(lineBall.getBoundingClientRect().x.toFixed(0)) + 5; // to trigger the center add the radius
   let lineBallY = Number(lineBall.getBoundingClientRect().y.toFixed(0)) + 5;
 
-  // console.log("circleBall= " + circleBallX + " --- " + circleBallY + "lineBall= " + lineBallX + ";" +lineBallY)
   if (
-    circleBallX - 6 <= lineBallX &&
-    circleBallX + 6 >= lineBallX &&
-    circleBallY <= lineBallY + 6 &&
-    circleBallY >= lineBallY - 6
-  ) {
+    circleBallX - 6 <= lineBallX && circleBallX + 6 >= lineBallX &&
+    circleBallY <= lineBallY + 6 && circleBallY >= lineBallY - 6) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+function checkColor(circleBall, lineBall) {
+  if ( (circleBall.classList.contains('blue') && lineBall.classList.contains('blue')) 
+    || (circleBall.classList.contains('yellow') && lineBall.classList.contains('yellow'))){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function addPoints(circleBall, lineBall) {
+  if (checkColor(circleBall, lineBall) && checkSameCoordinates(circleBall, lineBall)) {
+    addHalo(circleBall)
     lineBall.remove();
     // currentBalls.slice(lineBall, 1) // clean the array not sure it works
-    console.log(currentBalls)
-    score++;
+    score += 10;
     points.textContent = score;
   }
+  else if (!checkColor(circleBall, lineBall) && checkSameCoordinates(circleBall, lineBall)) {
+    console.log("score -5 is called")
+    console.log(typeof score +"-"+ score + "\n------\n")
+    score -= 5;
+    console.log(typeof score +"-"+ score)
+    points.textContent = score;
+  }
+
+
+}
+
+function addHalo(circleBall) {
+  let halo = document.createElement('span');
+  halo.classList.add('halo')
+  circleBall.appendChild(halo);
 }
 
 function timeCountdown() {
