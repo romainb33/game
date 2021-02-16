@@ -158,6 +158,7 @@ function stopTheGame() {
   clearInterval(intervalTime);
 }
 function addScoreBoard() {
+  audio.volume = 0.3;
   gameContainer.remove();
   scoreWrapper.style.display = "flex";
   finalScore.textContent = score;
