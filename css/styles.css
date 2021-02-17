@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital@0;1&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap');
 * {
   box-sizing: border-box;
   padding: 0;
@@ -14,22 +13,18 @@ ol {
 }
 body {
   overflow: hidden; /* Hide scrollbars */
-  background: -webkit-linear-gradient(
-    60deg,
-    #d34a4a 0%,
-    #c53d3d 50%,
-    #9e3030 100%
-  );
-  background: -moz-linear-gradient(
-    60deg,
-    #d34a4a 0%,
-    #c53d3d 50%,
-    #9e3030 100%
-  );
-  background: linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%);
+  /* background: -webkit-linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%);
+  background: -moz-linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%);
+  background: linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%); */
+  background: rgb(5,2,57);
+  background: -moz-linear-gradient(-300deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
+  background: -webkit-linear-gradient(-300deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(-330deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#050239",endColorstr="#00d4ff",GradientType=1);
   background-attachment: fixed;
   animation: gradient 12s ease infinite alternate;
-  background-size: 300% 300%;
+  background-size: 150% 150%;
+  /* background-size: 300% 300%; */
 }
 .center {
   text-align: center;
@@ -41,10 +36,13 @@ h4,
 p,
 a {
   color: white;
-  font-family: "Space Mono", monospace, sans-serif;
+  font-family: "DM Mono", monospace, sans-serif;
   font-weight: 400;
   text-align: center;
   letter-spacing: 0.7em;
+}
+h1 {
+  font-weight: 500;
 }
 a {
   text-decoration: none;
@@ -84,12 +82,12 @@ button {
 }
 #text-background span {
   font-size: 250px;
-  color: rgba(255, 255, 255, 0.1);
+  color: rgba(168, 179, 209, 0.1);
   filter: blur(15px);
-  font-family: "Space Mono", monospace, sans-serif;
+  font-family: "DM Mono", monospace, sans-serif;
   font-weight: 400;
   letter-spacing: 0.3em;
-  animation: letter-spacing 5s ease-in infinite alternate;
+  animation: letter-spacing 6s ease-in infinite alternate;
 }
 #intro-wrapper {
   margin: 0 auto;
@@ -277,19 +275,19 @@ p {
 }
 
 .blue {
-  background-color: lightblue;
-  border-color: lightblue;
+  background-color: #cc2658;
+  border-color: #cc2658;
 
   
 }
 .yellow {
-  background-color: lightyellow;
-  border-color: lightyellow;
+  background-color: #FFC80D;
+  border-color: #FFC80D;
 
 }
 /* FOOTER */
 #tips {
-  margin: 60px 0 20px;
+  margin: 30px 0;
 }
 .key {
   display: inline-block;
@@ -305,16 +303,17 @@ p {
   line-height: 28px;
 }
 #hud {
+  margin-top: 30px;
   width: 350px;
   justify-content: space-between;
   align-items: flex-end;
 }
 #hud p {
-  font-size: 12px;
+  font-size: 14px;
 }
 .points,
 .time {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 /* SCORE */
@@ -412,7 +411,7 @@ p {
   }
   100% {
     filter: blur(1px);
-    letter-spacing: 0.75em;
+    letter-spacing: 0.8em;
   }
 }
 @keyframes letter-spacing {
@@ -422,7 +421,7 @@ p {
   }
   100% {
     filter: blur(15px);
-    letter-spacing: 0.4em;
+    letter-spacing: 0.33em;
   }
 }
 

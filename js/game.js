@@ -22,9 +22,9 @@ const finalScore = document.querySelector(".final-score");
 const timer = document.querySelector(".time");
 
 // Sounds
-const audio = new Audio('./sounds/cello1.mp3');
+const audio = new Audio('../sounds/cello1.mp3');
 audio.volume = 0.6;
-const drop = new Audio('./sounds/drop.mp3');
+const drop = new Audio('../sounds/drop.mp3');
 drop.volume = 0.4;
 
 // Method for coordinates
