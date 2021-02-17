@@ -164,6 +164,16 @@ function addScoreBoard() {
   finalScore.textContent = score;
 }
 
+
+// Change rules depending on the media
+const rulesText = document.querySelector("#rules-text");
+const mediaQuery = window.matchMedia('(max-width: 1366px)')
+
+if (mediaQuery.matches) {
+  rulesText.textContent = "Tap on each circle to change their rotation and grab the maximum of orbs."
+}
+
+
 //Event listeners
 playBtn.addEventListener("click", function () {
   console.log("hello");

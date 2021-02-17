@@ -57,7 +57,6 @@ button {
   border-left: 1px solid white;
   height: 15%;
   position: fixed;
-  left: calc(100% / 2);
 }
 .top {
   top: 0px;
@@ -495,6 +494,9 @@ p {
   p {
     font-size: 13px;
     letter-spacing: 1px;
+  }
+  .vl {
+    height: 8%;
   }
   #text-background span {
     font-size: 100px;
