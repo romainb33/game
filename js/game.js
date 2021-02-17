@@ -22,16 +22,16 @@ const finalScore = document.querySelector(".final-score");
 const timer = document.querySelector(".time");
 
 // Sounds
-const audio = new Audio('../game/sounds/cello1.mp3');
+const audio = new Audio('./sounds/cello1.mp3');
 audio.volume = 0.6;
-const drop = new Audio('../game/sounds/drop.mp3');
+const drop = new Audio('./sounds/drop.mp3');
 drop.volume = 0.4;
 
 // create a array to stock each ball created
 let currentBalls = [];
 
 let score = 0;
-let time = 60;
+let time = 15;
 let intervalId = 0;
 let intervalId2 = 0;
 let intervalTime = 0;
@@ -108,7 +108,7 @@ function addPoints(circleBall, lineBall) {
     drop.play();
     lineBall.remove();
     // currentBalls.slice(lineBall, 1) // clean the array not sure it works
-    score += 10;
+    score += 40;
     points.textContent = score;
   }
   else if (!checkColor(circleBall, lineBall) && checkSameCoordinates(circleBall, lineBall)) {
@@ -134,6 +134,8 @@ function timeCountdown() {
     } else {
       stopTheGame();
       addScoreBoard();
+      getHighScore()
+      changeHighScore()
     }
   }, 1200);
 }
@@ -156,6 +158,34 @@ function addScoreBoard() {
   gameContainer.remove();
   scoreWrapper.style.display = "flex";
   finalScore.textContent = score;
+}
+
+
+// LOCAL STORAGE
+//set initial value for high score
+const highScore = document.getElementById('high-score')
+console.log(highScore)
+
+let highestscore = localStorage.getItem("highscore");
+function getHighScore() {
+  const newScore = finalScore.textContent;
+  console.log("newScore is called - " +  newScore)
+  if(highestscore !== null){
+    if (newScore > Number(highestscore)) {
+        localStorage.setItem("highscore", newScore);
+        highestscore = localStorage.getItem("highscore");
+        console.log("highscore is =" + highestscore)
+        return highestscore
+    }
+  }
+  else{
+      localStorage.setItem("highscore", newScore);
+      highestscore = localStorage.getItem("highscore");
+      return highestscore
+    }
+}
+function changeHighScore() {
+  highScore.textContent = highestscore;
 }
 
 
