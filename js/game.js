@@ -27,9 +27,6 @@ audio.volume = 0.6;
 const drop = new Audio('../game/sounds/drop.mp3');
 drop.volume = 0.4;
 
-// Method for coordinates
-// console.log(leftBallOne.getBoundingClientRect())
-
 // create a array to stock each ball created
 let currentBalls = [];
 
@@ -75,8 +72,7 @@ function newBalls() {
     //!\/!\/!\ Adjust the duration depending on the animation.
     setTimeout(() => {
       element.remove();
-      // currentBalls.unshift() clean the array
-    }, 5000);
+    }, 4900);
   }, 1000);
 }
 
@@ -119,9 +115,7 @@ function addPoints(circleBall, lineBall) {
     addHalo(circleBall)
     drop.play();
     lineBall.remove();
-    console.log("score -5 is called")
     score -= 5;
-    console.log(typeof score +"-"+ score)
     points.textContent = score;
   }
 }
@@ -141,7 +135,7 @@ function timeCountdown() {
       stopTheGame();
       addScoreBoard();
     }
-  }, 1000);
+  }, 1200);
 }
 
 function startTheGame() {
@@ -178,7 +172,7 @@ if (mediaQuery.matches) {
 playBtn.addEventListener("click", function () {
   console.log("hello");
   audio.play()
-  setTimeout(startTheGame, 1000);
+  setTimeout(startTheGame, 2500);
 
   gameIntro.style.display = "none";
   gameWrapper.style.display = "flex";

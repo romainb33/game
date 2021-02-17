@@ -13,14 +13,10 @@ ol {
 }
 body {
   overflow: hidden; /* Hide scrollbars */
-  /* background: -webkit-linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%);
-  background: -moz-linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%);
-  background: linear-gradient(60deg, #d34a4a 0%, #c53d3d 50%, #9e3030 100%); */
   background: rgb(5,2,57);
   background: -moz-linear-gradient(-300deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
   background: -webkit-linear-gradient(-300deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
   background: linear-gradient(-330deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#050239",endColorstr="#00d4ff",GradientType=1);
   background-attachment: fixed;
   animation: gradient 12s ease infinite alternate;
   background-size: 150% 150%;
@@ -362,7 +358,7 @@ p {
     opacity: 0;
   }
   to {
-    opacity: 0.5;
+    opacity: 1;
   }
 }
 
