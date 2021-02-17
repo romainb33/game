@@ -34,7 +34,8 @@ h2,
 h3,
 h4,
 p,
-a {
+a,
+button {
   color: white;
   font-family: "DM Mono", monospace, sans-serif;
   font-weight: 400;
@@ -81,7 +82,6 @@ button {
   user-select: none;
 }
 #text-background span {
-  
   font-size: 250px;
   color: rgba(168, 179, 209, 0.1);
   filter: blur(15px);
@@ -89,6 +89,15 @@ button {
   font-weight: 400;
   letter-spacing: 0.3em;
   animation: letter-spacing 6s ease-in infinite alternate;
+}
+#turn{
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.rotate {
+  margin-right: 10px;
 }
 #intro-wrapper {
   margin: 0 auto;
@@ -117,15 +126,14 @@ p {
 }
 #play-btn {
   margin: 40px 0px;
-}
-#play-btn a {
   color: #db4b4b;
   letter-spacing: 0.3em;
   transition: all 0.3s cubic-bezier(0, 0.95, 1, 1);
   padding: 10px 35px;
   background-color: white;
 }
-#play-btn a:hover {
+
+#play-btn:hover {
   letter-spacing: 0.5em;
   padding: 10px 45px;
 }
@@ -336,18 +344,17 @@ p {
 }
 .btn {
   margin: 70px 30px;
-  background: transparent;
-}
-.btn a {
   padding: 10px 30px;
   background: white;
+  border: 1px solid transparent;
   color: #db4b4b;
-}
-.btn a:hover {
-  background: transparent;
-  border: 1px solid white;
-  color: white;
   transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+  background: transparent;
+  border-color: white;
+  color: white;
+
 }
 
 /* ANIMATION */
@@ -435,6 +442,14 @@ p {
 }
 
 /* MEDIA QUERIES */
+@media (max-width: 760px) and (orientation:landscape){
+  #turn{ display:flex; }
+  #main-container{ display:none; }
+}
+@media (max-width: 760px) and (orientation:portrait){
+  #turn{ display:none; }
+  #main-container{ display:block; }
+}
 
 @media (max-width: 1366px) {
 
@@ -446,13 +461,11 @@ p {
     width: 80%;
   }
   #title-game {
-    margin-top: 0px;
+    margin-top: 30px;
   }
   #game-wrapper {
     width: 100%;
-    height: 70vh;
-    margin-top: 100px;
-    justify-content: space-around;
+    height: 100vh;
   }
 }
 
@@ -541,10 +554,7 @@ p {
   }
   .btn {
     margin: 50px 30px;
-    background: transparent;
-  }
-  .btn a {
-    padding: 8px 20px;
+    padding: 8px 10px;
     letter-spacing: 0.2em;
   }
 }
