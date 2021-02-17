@@ -23,7 +23,7 @@ const timer = document.querySelector(".time");
 
 // Sounds
 const audio = new Audio('../sounds/cello1.mp3');
-audio.volume = 0.6;
+audio.volume = 0;
 const drop = new Audio('../sounds/drop.mp3');
 drop.volume = 0.4;
 
@@ -34,7 +34,7 @@ drop.volume = 0.4;
 let currentBalls = [];
 
 let score = 0;
-let time = 60;
+let time = 4;
 let intervalId = 0;
 let intervalId2 = 0;
 let intervalTime = 0;
@@ -158,7 +158,7 @@ function stopTheGame() {
   clearInterval(intervalTime);
 }
 function addScoreBoard() {
-  audio.volume = 0.3;
+  audio.volume = 0;
   gameContainer.remove();
   scoreWrapper.style.display = "flex";
   finalScore.textContent = score;

@@ -71,16 +71,17 @@ button {
   right: -38px;
 }
 #text-background {
+  width: 100vw;
+  overflow: hidden;
   z-index: -10;
   position: absolute;
   left: 0;
   right: 0;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
   user-select: none;
 }
 #text-background span {
+  
   font-size: 250px;
   color: rgba(168, 179, 209, 0.1);
   filter: blur(15px);
@@ -106,9 +107,6 @@ button {
 }
 #intro-title h1 {
   font-size: 50px;
-}
-#intro-title h2 {
-  font-size: 25px;
 }
 p {
   font-size: 14px;
@@ -152,10 +150,6 @@ p {
 }
 #title-game {  
   margin: 40px;
-}
-#title-game h2 {
-  animation: title 7s ease-in-out infinite alternate;  
-  font-size: 18px;
 }
 #title-game h1 {
   animation: title 7s ease-in-out infinite alternate-reverse;
@@ -437,5 +431,120 @@ p {
   100% {
     transform: scale(3);
     opacity: 0;
+  }
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1366px) {
+
+  #text-background span {
+    font-size: 150px;
+    line-height: 480px;
+  }
+  #intro-wrapper {
+    width: 80%;
+  }
+  #title-game {
+    margin-top: 0px;
+  }
+  #game-wrapper {
+    width: 100%;
+    height: 70vh;
+    margin-top: 100px;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 768px) {
+
+  #text-background span {
+    font-size: 150px;
+    line-height: 480px;
+  }
+  #intro-wrapper {
+    width: 80%;
+  }
+  #title-game {
+    margin-top: 0px;
+  }
+  #game-wrapper {
+    overflow: hidden;
+    align-items: space-around;;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 0px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 440px) {
+  p {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  #text-background span {
+    font-size: 100px;
+    line-height: 300px;
+  }
+  #intro-wrapper {
+    width: 90%;
+  }
+
+  #intro-title h1 {
+    font-size: 30px;
+  }
+  #game-wrapper {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+  #title-game {
+    margin: 0 0 20px;;
+  }
+  #title-game h1 {
+    font-size: 25px;
+  }
+  #hud {
+    width: 80vw;
+  }
+  #tips {
+    display: none;
+  }
+  #tips p {
+    font-size: 12px;
+    line-height: 25px;
+  }
+  #tips .key {
+    top: 0px;
+    right: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    font-size: 8px;
+    line-height: 20px;
+  }
+  #score-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+  #score-wrapper h3 {
+    letter-spacing: 0.3em;
+    margin-top: 50px;
+    font-size: 20px;
+  }
+  #score-wrapper h3 span {
+    font-size: 35px;
+  }
+  #score-wrapper p {
+    font-size: 18px;
+  }
+  .btn {
+    margin: 50px 30px;
+    background: transparent;
+  }
+  .btn a {
+    padding: 8px 20px;
+    letter-spacing: 0.2em;
   }
 }
