@@ -22,16 +22,16 @@ const finalScore = document.querySelector(".final-score");
 const timer = document.querySelector(".time");
 
 // Sounds
-const audio = new Audio('./sounds/cello1.mp3');
+const audio = new Audio('../game/sounds/cello1.mp3');
 audio.volume = 0.6;
-const drop = new Audio('./sounds/drop.mp3');
+const drop = new Audio('../game/sounds/drop.mp3');
 drop.volume = 0.4;
 
 // create a array to stock each ball created
 let currentBalls = [];
 
 let score = 0;
-let time = 15;
+let time = 60;
 let intervalId = 0;
 let intervalId2 = 0;
 let intervalTime = 0;
@@ -108,7 +108,7 @@ function addPoints(circleBall, lineBall) {
     drop.play();
     lineBall.remove();
     // currentBalls.slice(lineBall, 1) // clean the array not sure it works
-    score += 40;
+    score += 15;
     points.textContent = score;
   }
   else if (!checkColor(circleBall, lineBall) && checkSameCoordinates(circleBall, lineBall)) {
@@ -193,10 +193,9 @@ function changeHighScore() {
 const rulesText = document.querySelector("#rules-text");
 const mediaQuery = window.matchMedia('(max-width: 1366px)')
 
-if (mediaQuery.matches) {
-  rulesText.textContent = "Tap on each circle to change their rotation and grab the maximum of orbs."
+if (mediaQuery.matches && navigator.maxTouchPoints > 1) {
+  rulesText.textContent = "Tap on each circle to change their direction and grab a maximum of orbs."
 }
-
 
 //Event listeners
 playBtn.addEventListener("click", function () {
@@ -236,7 +235,7 @@ playAgain.addEventListener("click", function () {
   document.location.reload();
 });
 
-// FOR TOUCH DEVICE
+// FOR MULTITOUCH DEVICES
 if (navigator.maxTouchPoints > 1) {
   leftCircle.addEventListener("click", function (event) {
       leftCircle.classList.toggle("reverse");
