@@ -34,7 +34,7 @@ drop.volume = 0.4;
 let currentBalls = [];
 
 let score = 0;
-let time = 4;
+let time = 60;
 let intervalId = 0;
 let intervalId2 = 0;
 let intervalTime = 0;
@@ -202,3 +202,14 @@ document.addEventListener("keydown", function (event) {
 playAgain.addEventListener("click", function () {
   document.location.reload();
 });
+
+// FOR TOUCH DEVICE
+if (navigator.maxTouchPoints > 1) {
+  leftCircle.addEventListener("click", function (event) {
+      leftCircle.classList.toggle("reverse");
+  });
+  
+  rightCircle.addEventListener("click", function (event) {
+      rightCircle.classList.toggle("reverse");
+  });
+}
