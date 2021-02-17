@@ -23,7 +23,7 @@ const timer = document.querySelector(".time");
 
 // Sounds
 const audio = new Audio('../sounds/cello1.mp3');
-audio.volume = 0;
+audio.volume = 0.6;
 const drop = new Audio('../sounds/drop.mp3');
 drop.volume = 0.4;
 
@@ -158,7 +158,7 @@ function stopTheGame() {
   clearInterval(intervalTime);
 }
 function addScoreBoard() {
-  audio.volume = 0;
+  audio.volume = 0.3;
   gameContainer.remove();
   scoreWrapper.style.display = "flex";
   finalScore.textContent = score;
