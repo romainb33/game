@@ -170,7 +170,6 @@ if (mediaQuery.matches) {
 
 //Event listeners
 playBtn.addEventListener("click", function () {
-  console.log("hello");
   audio.play()
   setTimeout(startTheGame, 2500);
 
