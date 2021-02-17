@@ -234,6 +234,18 @@ p {
   background-color: inherit;
   animation: halo 0.3s ease-in-out;
   border-radius: 50%;
+  opacity: 0;
+}
+.plus-minus{
+  font-family: "DM Mono", monospace, sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 45px;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  animation: bonus 1s ease-out;
+  opacity: 0;
 }
 
 
@@ -354,6 +366,20 @@ p {
 }
 
 /* ANIMATION */
+@keyframes bonus {
+  0% {
+    opacity: 0;
+    transform: scale(0)
+  }
+  75% {
+    opacity: 1;
+    transform: scale(0.75)
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1)
+  }
+}
 @keyframes fade {
   from {
     opacity: 0;

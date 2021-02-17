@@ -16,6 +16,7 @@ const rightBallOne = document.getElementById("right-1");
 const rightBallTwo = document.getElementById("right-2");
 
 const lines = document.querySelectorAll(".line");
+const linesZone = document.querySelector("#lines-zone");
 
 const points = document.querySelector(".points");
 const finalScore = document.querySelector(".final-score");
@@ -104,7 +105,8 @@ function checkColor(circleBall, lineBall) {
 
 function addPoints(circleBall, lineBall) {
   if (checkColor(circleBall, lineBall) && checkSameCoordinates(circleBall, lineBall)) {
-    addHalo(circleBall)
+    addHalo(circleBall);
+    infoPoint(circleBall,lineBall) 
     drop.play();
     lineBall.remove();
     // currentBalls.slice(lineBall, 1) // clean the array not sure it works
@@ -113,6 +115,7 @@ function addPoints(circleBall, lineBall) {
   }
   else if (!checkColor(circleBall, lineBall) && checkSameCoordinates(circleBall, lineBall)) {
     addHalo(circleBall)
+    infoPoint(circleBall,lineBall) 
     drop.play();
     lineBall.remove();
     score -= 5;
@@ -124,6 +127,33 @@ function addHalo(circleBall) {
   let halo = document.createElement('span');
   halo.classList.add('halo')
   circleBall.appendChild(halo);
+}
+
+// Demander ce qui est le mieux entre ces 2 fonctions ou infoPoint()
+// function plusPoint() {
+//   let plus = document.createElement('span');
+//   plus.innerText = "+15";
+//   plus.classList.add('plus-minus');
+//   linesZone.appendChild(plus);
+// }
+// function minusPoint() {
+//   let minus = document.createElement('span');
+//   minus.innerText = "-5";
+//   minus.classList.add('plus-minus');
+//   minus.style.left = "40%";
+//   linesZone.appendChild(minus);
+// }
+
+function infoPoint(circleBall, lineBall) {
+  let info = document.createElement('span');
+  info.classList.add('plus-minus');
+  linesZone.appendChild(info);
+  if (!checkColor(circleBall, lineBall)) {
+    info.innerText = "-5";
+    info.style.left = "40%";
+  } else if (checkColor(circleBall, lineBall)) {
+    info.innerText = "+15";
+  }
 }
 
 function timeCountdown() {
