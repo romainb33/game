@@ -24,7 +24,7 @@ const timer = document.querySelector(".time");
 
 // SOUNDS
 const audio = new Audio("./sounds/cello1.mp3");
-audio.volume = 0.6;
+audio.volume = 0;
 const drop = new Audio("./sounds/drop.mp3");
 drop.volume = 0.4;
 
@@ -33,6 +33,7 @@ let currentBalls = [];
 
 let score = 0;
 let time = 60;
+let intervalTiming = 1000;
 let intervalId = 0;
 let intervalId2 = 0;
 let intervalTime = 0;
@@ -45,11 +46,12 @@ let ballIndex = "ball" + i;
 function newBalls() {
   intervalId = setInterval(() => {
     ballIndex = "ball" + i++;
-    let randomIndex = Math.floor(Math.random() * lines.length);
+    
     const balls = document.createElement("div");
     balls.setAttribute("id", ballIndex);
     balls.classList.add("line-ball");
     RandomColors(balls);
+    let randomIndex = Math.floor(Math.random() * lines.length);
     lines[randomIndex].appendChild(balls);
 
     currentBalls.push(balls);
@@ -62,14 +64,18 @@ function newBalls() {
         addPoints(rightBallTwo, ball);
       });
     }, 40);
-    let element = document.getElementById(ballIndex);
 
-    // Remove ball if it reaches the end of the line
-    //!\/!\/!\ Adjust the duration depending on the animation.
-    setTimeout(() => {
-      element.remove();
-    }, 4900);
-  }, 1000);
+    increaseSpeed(score, balls);
+    removeUngrabedBalls(ballIndex, 4900)
+  }, intervalTiming);
+}
+
+// Remove ball if it reaches the end of the line
+function  removeUngrabedBalls(index, timing) {
+  let element = document.getElementById(index);
+  setTimeout(() => {
+    element.remove();
+  }, timing);
 }
 
 // Add a random class
@@ -147,7 +153,6 @@ function grabBallsAnimation(circleBall, lineBall) {
   drop.play();
   lineBall.remove();
 }
-
 // Increase/Decrease the score and
 function addPoints(circleBall, lineBall) {
   if (
@@ -165,6 +170,25 @@ function addPoints(circleBall, lineBall) {
     score -= 5;
     points.textContent = score;
   }
+}
+
+function increaseSpeed(score, lineBall) {
+  if (score > 100) {
+    lineBall.style.animation = "lateral-move 3.5s linear"
+    intervalTiming = 800;
+    removeUngrabedBalls(ballIndex, 3400)
+    clearInterval(intervalId);
+    clearInterval(intervalId2);
+    newBalls();
+  } 
+  // else if (score > 150) {
+  //   lineBall.style.animation = "lateral-move 2.5s linear"
+  //   intervalTiming = 150;
+  //   removeUngrabedBalls(ballIndex, 2400)
+  //   clearInterval(intervalId);
+  //   clearInterval(intervalId2);
+  //   newBalls();
+  // }
 }
 
 function timeCountdown() {
