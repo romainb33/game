@@ -37,16 +37,20 @@ let intervalTiming = 1000;
 let intervalId = 0;
 let intervalId2 = 0;
 let intervalTime = 0;
-
+let intervalSuperBall = 0;
 let i = 0;
 let ballIndex = "ball" + i;
 
 // FUNCTIONS
+function addBalls() {
+  intervalId = setInterval(newBalls, intervalTiming);
+  intervalSuperBall = setInterval(createSuperBall, 12000);
+  realTimeCoordinates(currentBalls) 
+  increaseSpeed(score);
+} 
 // Create Balls on horizontal lines and remove it at the end.
 function newBalls() {
-  intervalId = setInterval(() => {
     ballIndex = "ball" + i++;
-    
     const balls = document.createElement("div");
     balls.setAttribute("id", ballIndex);
     balls.classList.add("line-ball");
@@ -55,23 +59,26 @@ function newBalls() {
     lines[randomIndex].appendChild(balls);
 
     currentBalls.push(balls);
-    // Calculate the realtime position of each balls and circleBalls
-    intervalId2 = setInterval(() => {
-      currentBalls.forEach((ball) => {
-        addPoints(leftBallOne, ball);
-        addPoints(leftBallTwo, ball);
-        addPoints(rightBallOne, ball);
-        addPoints(rightBallTwo, ball);
-      });
-    }, 40);
-
-    increaseSpeed(score, balls);
     removeUngrabedBalls(ballIndex, 4900)
-  }, intervalTiming);
+}
+
+function createSuperBall() {
+  const ball = document.createElement("div");
+  ball.classList.add("line-ball");
+  ball.classList.add("extra");
+  let randomIndex = Math.floor(Math.random() * lines.length);
+  lines[randomIndex].appendChild(ball);
+
+
+  currentBalls.push(ball);
+
+  setTimeout(function() {
+    ball.remove()
+  }, 3900)
 }
 
 // Remove ball if it reaches the end of the line
-function  removeUngrabedBalls(index, timing) {
+function removeUngrabedBalls(index, timing) {
   let element = document.getElementById(index);
   setTimeout(() => {
     element.remove();
@@ -85,6 +92,44 @@ function RandomColors(ball) {
     ball.classList.add("yellow");
   } else {
     ball.classList.add("blue");
+  }
+}
+
+// Calculate the realtime position of each balls and circleBalls
+function realTimeCoordinates(balls) {
+  intervalId2 = setInterval(() => {
+    balls.forEach((ball) => {
+      addPoints(leftBallOne, ball);
+      addPoints(leftBallTwo, ball);
+      addPoints(rightBallOne, ball);
+      addPoints(rightBallTwo, ball);
+    });
+  }, 40);
+}
+
+// Increase/Decrease the score and
+function addPoints(circleBall, lineBall) {
+  if (
+    lineBall.classList.contains("extra") &&
+    checkSameCoordinates(circleBall, lineBall)
+  ) {
+    grabBallsAnimation(circleBall, lineBall);
+    score += 40;
+    points.textContent = score;
+  } else if (
+    checkColor(circleBall, lineBall) &&
+    checkSameCoordinates(circleBall, lineBall)
+  ) {
+    grabBallsAnimation(circleBall, lineBall);
+    score += 15;
+    points.textContent = score;
+  } else if (
+    !checkColor(circleBall, lineBall) &&
+    checkSameCoordinates(circleBall, lineBall)
+  ) {
+    grabBallsAnimation(circleBall, lineBall);
+    score -= 5;
+    points.textContent = score;
   }
 }
 
@@ -122,6 +167,25 @@ function checkColor(circleBall, lineBall) {
   }
 }
 
+function increaseSpeed(score) {
+  const lineball = document.getElementsByClassName('line-ball')
+  if (score > 100) {
+    lineball.style.animation = "lateral-move 3.5s linear"
+    intervalTiming = 800;
+    removeUngrabedBalls(ballIndex, 3400)
+    clearInterval(intervalId);
+    clearInterval(intervalId2);
+  } 
+  // else if (score > 150) {
+  //   lineball.style.animation = "lateral-move 2.5s linear"
+  //   intervalTiming = 150;
+  //   removeUngrabedBalls(ballIndex, 2400)
+  //   clearInterval(intervalId);
+  //   clearInterval(intervalId2);
+  // }
+}
+
+//FUNCTION FOR ANIMATIONS
 // Add animation to the big balls
 function addHalo(circleBall) {
   let halo = document.createElement("span");
@@ -136,7 +200,11 @@ function addHalo(circleBall) {
 function infoPoint(circleBall, lineBall) {
   const info = document.querySelector(".plus-minus");
   info.classList.add("anim-point");
-  if (!checkColor(circleBall, lineBall)) {
+  if (lineBall.classList.contains("extra") &&
+  checkSameCoordinates(circleBall, lineBall)) {
+    info.innerText = "+40";
+  }
+  else if (!checkColor(circleBall, lineBall)) {
     info.innerText = "-5";
     info.style.left = "40%";
   } else if (checkColor(circleBall, lineBall)) {
@@ -152,43 +220,6 @@ function grabBallsAnimation(circleBall, lineBall) {
   infoPoint(circleBall, lineBall);
   drop.play();
   lineBall.remove();
-}
-// Increase/Decrease the score and
-function addPoints(circleBall, lineBall) {
-  if (
-    checkColor(circleBall, lineBall) &&
-    checkSameCoordinates(circleBall, lineBall)
-  ) {
-    grabBallsAnimation(circleBall, lineBall);
-    score += 15;
-    points.textContent = score;
-  } else if (
-    !checkColor(circleBall, lineBall) &&
-    checkSameCoordinates(circleBall, lineBall)
-  ) {
-    grabBallsAnimation(circleBall, lineBall);
-    score -= 5;
-    points.textContent = score;
-  }
-}
-
-function increaseSpeed(score, lineBall) {
-  if (score > 100) {
-    lineBall.style.animation = "lateral-move 3.5s linear"
-    intervalTiming = 800;
-    removeUngrabedBalls(ballIndex, 3400)
-    clearInterval(intervalId);
-    clearInterval(intervalId2);
-    newBalls();
-  } 
-  // else if (score > 150) {
-  //   lineBall.style.animation = "lateral-move 2.5s linear"
-  //   intervalTiming = 150;
-  //   removeUngrabedBalls(ballIndex, 2400)
-  //   clearInterval(intervalId);
-  //   clearInterval(intervalId2);
-  //   newBalls();
-  // }
 }
 
 function timeCountdown() {
@@ -206,7 +237,7 @@ function timeCountdown() {
 }
 
 function startTheGame() {
-  newBalls();
+  addBalls();
   timeCountdown();
 }
 
@@ -217,6 +248,7 @@ function stopTheGame() {
   clearInterval(intervalId);
   clearInterval(intervalId2);
   clearInterval(intervalTime);
+  clearInterval(intervalSuperBall)
 }
 function addScoreBoard() {
   audio.volume = 0.3;

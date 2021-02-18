@@ -189,7 +189,6 @@ p {
   border-radius: 50%;
 
   animation: spin 5s linear 0s infinite reverse;
-
   animation-play-state: paused;
 }
 
@@ -201,7 +200,6 @@ p {
   border-radius: 50%;
 
   animation: spin 5s linear 0s infinite reverse;
-
   animation-play-state: paused;
 }
 
@@ -280,6 +278,15 @@ p {
   border-radius: 50%;
   animation: lateral-move 5s linear;
   animation-direction: inherit;
+}
+.extra {
+  height: 12px;
+  width: 12px;
+  top: -6px;
+  border-radius: 10%;
+  background-color: rgb(0, 194, 26);
+  animation: lateral-move 4s linear;
+  
 }
 .line {
   position: relative;
