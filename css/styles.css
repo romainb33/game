@@ -126,10 +126,29 @@ button {
 }
 p {
   font-size: 14px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
 }
 .intro-text {
+  flex-direction: column;
   line-height: 32px;
+  align-items: center;
+}
+#rules-points {
+  text-align: left;
+}
+.rules-ball {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+}
+.green {
+ border-radius: 10%;
+ background-color: rgb(0, 194, 26);
+}
+.precision {
+  font-size: 10px;
+  letter-spacing: 0;
 }
 #play-btn {
   margin: 40px 0px;
@@ -276,7 +295,7 @@ p {
   width: 10px;
   background-color: white;
   border-radius: 50%;
-  animation: lateral-move 5s linear;
+  animation: lateral-move 4.5s linear;
   animation-direction: inherit;
 }
 .extra {
@@ -285,7 +304,7 @@ p {
   top: -6px;
   border-radius: 10%;
   background-color: rgb(0, 194, 26);
-  animation: lateral-move 4s linear;
+  animation: lateral-move 3s linear;
   
 }
 .line {

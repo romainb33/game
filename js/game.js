@@ -24,7 +24,7 @@ const timer = document.querySelector(".time");
 
 // SOUNDS
 const audio = new Audio("./sounds/cello1.mp3");
-audio.volume = 0;
+audio.volume = 0.6;
 const drop = new Audio("./sounds/drop.mp3");
 drop.volume = 0.4;
 
@@ -33,7 +33,6 @@ let currentBalls = [];
 
 let score = 0;
 let time = 60;
-let intervalTiming = 1000;
 let intervalId = 0;
 let intervalId2 = 0;
 let intervalTime = 0;
@@ -43,10 +42,9 @@ let ballIndex = "ball" + i;
 
 // FUNCTIONS
 function addBalls() {
-  intervalId = setInterval(newBalls, intervalTiming);
-  intervalSuperBall = setInterval(createSuperBall, 12000);
-  realTimeCoordinates(currentBalls) 
-  increaseSpeed(score);
+  intervalId = setInterval(newBalls, 800);
+  intervalSuperBall = setInterval(createSuperBall, 13000);
+  realTimeCoordinates(currentBalls);
 } 
 // Create Balls on horizontal lines and remove it at the end.
 function newBalls() {
@@ -59,9 +57,10 @@ function newBalls() {
     lines[randomIndex].appendChild(balls);
 
     currentBalls.push(balls);
-    removeUngrabedBalls(ballIndex, 4900)
+    removeUngrabedBalls(ballIndex, 4400)
 }
 
+// Create superBall
 function createSuperBall() {
   const ball = document.createElement("div");
   ball.classList.add("line-ball");
@@ -69,12 +68,11 @@ function createSuperBall() {
   let randomIndex = Math.floor(Math.random() * lines.length);
   lines[randomIndex].appendChild(ball);
 
-
   currentBalls.push(ball);
 
   setTimeout(function() {
     ball.remove()
-  }, 3900)
+  }, 2900)
 }
 
 // Remove ball if it reaches the end of the line
@@ -107,7 +105,7 @@ function realTimeCoordinates(balls) {
   }, 40);
 }
 
-// Increase/Decrease the score and
+// Increase/Decrease the score and add different animations
 function addPoints(circleBall, lineBall) {
   if (
     lineBall.classList.contains("extra") &&
@@ -167,22 +165,25 @@ function checkColor(circleBall, lineBall) {
   }
 }
 
-function increaseSpeed(score) {
+function increaseSpeed() {
+  console.log("increaseSpeed called")
   const lineball = document.getElementsByClassName('line-ball')
   if (score > 100) {
+    console.log("increaseSpeed 800")
     lineball.style.animation = "lateral-move 3.5s linear"
-    intervalTiming = 800;
     removeUngrabedBalls(ballIndex, 3400)
     clearInterval(intervalId);
     clearInterval(intervalId2);
-  } 
-  // else if (score > 150) {
-  //   lineball.style.animation = "lateral-move 2.5s linear"
-  //   intervalTiming = 150;
-  //   removeUngrabedBalls(ballIndex, 2400)
-  //   clearInterval(intervalId);
-  //   clearInterval(intervalId2);
-  // }
+    intervalId = setInterval(newBalls, 800)
+  }
+  else if (score > 150) {
+    console.log("increaseSpeed 500")
+    lineball.style.animation = "lateral-move 2.5s linear"
+    removeUngrabedBalls(ballIndex, 2400)
+    clearInterval(intervalId);
+    clearInterval(intervalId2);
+    intervalId = setInterval(newBalls, 500)
+  }
 }
 
 //FUNCTION FOR ANIMATIONS
@@ -222,6 +223,7 @@ function grabBallsAnimation(circleBall, lineBall) {
   lineBall.remove();
 }
 
+// Decrease time and stop game if 0
 function timeCountdown() {
   intervalTime = setInterval(() => {
     if (time > 0) {
@@ -250,8 +252,9 @@ function stopTheGame() {
   clearInterval(intervalTime);
   clearInterval(intervalSuperBall)
 }
+
 function addScoreBoard() {
-  audio.volume = 0.3;
+  audio.volume = 0.2;
   gameContainer.remove();
   scoreWrapper.style.display = "flex";
   finalScore.textContent = score;
@@ -295,7 +298,7 @@ if (mediaQuery.matches && navigator.maxTouchPoints > 1) {
 //EVENT LISTENERS
 playBtn.addEventListener("click", function () {
   audio.play();
-  setTimeout(startTheGame, 2500);
+  setTimeout(startTheGame, 2000);
 
   gameIntro.style.display = "none";
   gameWrapper.style.display = "flex";

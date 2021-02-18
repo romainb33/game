@@ -44,7 +44,7 @@
           <h1 class="center">.Orbies.</h1>
         </div>
 
-        <div class="intro-text">
+        <div class="intro-text flex">
           <p>
             Welcome into orbit.<br />
             Your objective is simple, get the highest score by catching yellow
@@ -53,8 +53,13 @@
           <p id="rules-text">
             Use <span class="key">Q</span>|<span class="key">D</span> and
             <span class="key">&lt;</span>|<span class="key">&gt;</span> to
-            change the direction of each circles and grab a maximum of orbs.
+            change the direction of each circle and grab a maximum of orbs.
           </p>
+          <p id="rules-points">
+            <span class="rules-ball blue"></span> <span class="rules-ball yellow"></span> = +15pts / -5pts <i class="precision">if you grab it with the wrong circle</i>
+            <br> <span class="rules-ball green"></span> = +40pts
+        </p>
+          
         </div>
 
         <button id="play-btn">Play</button>
