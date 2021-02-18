@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap");
 * {
   box-sizing: border-box;
   padding: 0;
@@ -13,10 +13,22 @@ ol {
 }
 body {
   overflow: hidden; /* Hide scrollbars */
-  background: rgb(5,2,57);
-  background: -moz-linear-gradient(-300deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
-  background: -webkit-linear-gradient(-300deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
-  background: linear-gradient(-330deg, rgba(5,2,57,1) 30%, rgba(0,212,255,1) 100%);
+  background: rgb(5, 2, 57);
+  background: -moz-linear-gradient(
+    -300deg,
+    rgba(5, 2, 57, 1) 30%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    -300deg,
+    rgba(5, 2, 57, 1) 30%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  background: linear-gradient(
+    -330deg,
+    rgba(5, 2, 57, 1) 30%,
+    rgba(0, 212, 255, 1) 100%
+  );
   background-attachment: fixed;
   animation: gradient 12s ease infinite alternate;
   background-size: 150% 150%;
@@ -85,7 +97,7 @@ button {
   letter-spacing: 0.3em;
   animation: letter-spacing 6s ease-in infinite alternate;
 }
-#turn{
+#turn {
   display: none;
   height: 100vh;
   justify-content: center;
@@ -134,7 +146,7 @@ p {
 }
 
 /* GAME PART */
-#game-container{
+#game-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -151,7 +163,7 @@ p {
 .fadein {
   animation: fade 1.5s ease-in;
 }
-#title-game {  
+#title-game {
   margin: 40px;
 }
 #title-game h1 {
@@ -203,11 +215,9 @@ p {
   /* transform: rotate(90deg);  */
   animation: spin 10s linear 0s infinite normal;
 }
-
 .reverse {
   animation-play-state: running;
 }
-
 .ball {
   height: 14px;
   width: 14px;
@@ -236,7 +246,7 @@ p {
   border-radius: 50%;
   opacity: 0;
 }
-.plus-minus{
+.plus-minus {
   font-family: "DM Mono", monospace, sans-serif;
   color: white;
   text-align: center;
@@ -244,10 +254,11 @@ p {
   position: absolute;
   top: 35%;
   left: 35%;
-  animation: bonus 1s ease-out;
   opacity: 0;
 }
-
+.anim-point {
+  animation: bonus 0.7s ease-out;
+}
 
 /* LINES */
 #lines-zone {
@@ -267,9 +278,8 @@ p {
   width: 10px;
   background-color: white;
   border-radius: 50%;
-  animation: lateral-move 5s linear ;
+  animation: lateral-move 5s linear;
   animation-direction: inherit;
-
 }
 .line {
   position: relative;
@@ -286,13 +296,10 @@ p {
 .blue {
   background-color: #cc2658;
   border-color: #cc2658;
-
-  
 }
 .yellow {
-  background-color: #FFC80D;
-  border-color: #FFC80D;
-
+  background-color: #ffc80d;
+  border-color: #ffc80d;
 }
 /* FOOTER */
 #tips {
@@ -362,22 +369,21 @@ p {
   background: transparent;
   border-color: white;
   color: white;
-
 }
 
 /* ANIMATION */
 @keyframes bonus {
   0% {
     opacity: 0;
-    transform: scale(0)
+    transform: scale(0);
   }
   75% {
     opacity: 1;
-    transform: scale(0.75)
+    transform: scale(0.75);
   }
   100% {
     opacity: 0;
-    transform: scale(1)
+    transform: scale(1);
   }
 }
 @keyframes fade {
@@ -406,7 +412,7 @@ p {
   5% {
     opacity: 1;
   }
-  95% {   
+  95% {
     opacity: 1;
   }
   100% {
@@ -464,17 +470,24 @@ p {
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 760px) and (orientation:landscape){
-  #turn{ display:flex; }
-  #main-container{ display:none; }
+@media (max-width: 760px) and (orientation: landscape) {
+  #turn {
+    display: flex;
+  }
+  #main-container {
+    display: none;
+  }
 }
-@media (max-width: 760px) and (orientation:portrait){
-  #turn{ display:none; }
-  #main-container{ display:block; }
+@media (max-width: 760px) and (orientation: portrait) {
+  #turn {
+    display: none;
+  }
+  #main-container {
+    display: block;
+  }
 }
 
 @media (max-width: 1280px) {
-
   #text-background span {
     font-size: 150px;
     line-height: 480px;
@@ -492,7 +505,6 @@ p {
 }
 
 @media (max-width: 768px) {
-
   #text-background span {
     font-size: 150px;
     line-height: 480px;
@@ -505,7 +517,6 @@ p {
   }
   #game-wrapper {
     overflow: hidden;
-    align-items: space-around;;
     width: 100vw;
     height: 100vh;
     margin-top: 0px;
@@ -540,7 +551,7 @@ p {
     height: 100vh;
   }
   #title-game {
-    margin: 0 0 20px;;
+    margin: 0 0 20px;
   }
   #title-game h1 {
     font-size: 25px;
